@@ -22,7 +22,7 @@ class PaymentServiceSpringTest {
     @Autowired Clock clock;
 
     @Test
-    void convertedAmount() throws IOException {
+    void convertedAmount()  {
         Payment payment = paymentService.prepare(100L, "USD", BigDecimal.TEN);
 
         assertThat(payment.getExRate()).isEqualByComparingTo(BigDecimal.valueOf(1_000));
@@ -37,7 +37,7 @@ class PaymentServiceSpringTest {
     }
 
     @Test
-    void validUntil() throws IOException {
+    void validUntil()  {
         PaymentService paymentService = new PaymentService(
             new ExRateProviderStub(BigDecimal.valueOf(1_000)), this.clock);
 

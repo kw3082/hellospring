@@ -27,11 +27,11 @@ public class Payment {
 
     public static Payment createPrepared(Long orderId, String currency,
         BigDecimal foreignCurrencyAmount, ExRateProvider exRateProvider,
-        Clock clock) throws IOException {
+        Clock clock) {
         BigDecimal exRate = exRateProvider.getExRate(currency);
         BigDecimal convertedAmount = foreignCurrencyAmount.multiply(exRate);
         LocalDateTime validUntil = LocalDateTime.now(clock).plusMinutes(30);
-        
+
         return new Payment(orderId, currency, foreignCurrencyAmount, exRate, convertedAmount, validUntil);
     }
 

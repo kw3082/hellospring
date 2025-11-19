@@ -1,18 +1,17 @@
 package imoong.hellospring.data;
 
 import imoong.hellospring.order.Order;
+import imoong.hellospring.order.OrderRepository;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.PersistenceContext;
-import java.math.BigDecimal;
 
 
-public class OrderRepository {
+public class JpaOrderRepository implements OrderRepository {
 
     @PersistenceContext
     private EntityManager em;
 
+    @Override
     public void save(Order order) {
         em.persist(order);
     }

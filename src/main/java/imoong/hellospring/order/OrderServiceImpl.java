@@ -1,10 +1,12 @@
 package imoong.hellospring.order;
 
+import jakarta.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
+@Transactional
 public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
